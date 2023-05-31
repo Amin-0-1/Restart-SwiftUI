@@ -25,7 +25,6 @@ struct OnboardingView: View {
                     Text("Share.")
                         .font(.system(size: 60))
                         .fontWeight(.heavy)
-                        .foregroundColor(.white)
                     
                     Text("""
                          It's not how much we give but
@@ -34,9 +33,9 @@ struct OnboardingView: View {
                     )
                     .font(.title3)
                     .fontWeight(.light)
-                    .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                 }
+                .foregroundColor(.white)
                 .opacity(isAnimating ? 1 : 0)
                 .offset(y: isAnimating ? 0 : -40)
                 .animation(.easeOut(duration: 1), value: isAnimating)
@@ -44,15 +43,7 @@ struct OnboardingView: View {
                 // MARK: - Center
                 
                 ZStack {
-                    ZStack {
-                        Circle()
-                            .stroke(.white.opacity(0.2),lineWidth: 40)
-                        
-                        Circle()
-                            .stroke(.white.opacity(0.2),lineWidth: 80)
-                            
-                    }
-                    .frame(width: 260, height: 260, alignment: .center)
+                    CircleGroupView(shapeColor: .white,shapeOpacity: 0.2)
                     Image("character-1")
                         .resizable()
                         .scaledToFit()
@@ -98,11 +89,11 @@ struct OnboardingView: View {
                         ZStack{
                             Capsule()
                                 .fill(Color("ColorRed"))
-                            
+
                             Capsule()
                                 .fill(.black.opacity(0.15))
                                 .padding(8)
-                            
+
                             Image(systemName: "chevron.right.2")
                                 .font(.system(size: 24, weight: .bold))
                         }
