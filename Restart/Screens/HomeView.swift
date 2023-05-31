@@ -14,46 +14,36 @@ struct HomeView: View {
             // MARK: - Header
             Spacer()
             ZStack {
-                Circle()
-                    .stroke(.gray.opacity(0.1),lineWidth: 40)
-                    .padding(.all,50)
-                Circle()
-                    .stroke(.gray.opacity(0.1),lineWidth: 80)
-                    .padding(.all,50)
+                CircleGroupView(shapeColor: .secondary,shapeOpacity: 0.2)
                 Image("character-2")
                     .resizable()
                     .scaledToFit()
-            }.padding()
-            Spacer()
+                    .padding()
+            }
             
             // MARK: - Center
-            Text("""
-                 The time that leads to mastery is
-                 dependent on the intensity of our focus.
-                 """
-            )
-            .font(.title3)
-            .multilineTextAlignment(.center)
-            .foregroundColor(.gray)
-            Spacer()
-            // MARK: - Footer
+            Text("The time that leads to mastery is dependent on the intensity of our focus.")
+                .font(.title3)
+                .fontWeight(.light)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
+                .padding()
             
-            ZStack {
-                Capsule()
-                    .frame(width: 120, height: 50, alignment: .center)
-                    .foregroundColor(Color("ColorBlue"))
-                  
-                HStack{
-                    Image(systemName:"trash")
-                        .scaledToFit()
-                        .tint(.white)
-                    Text("Restart")
-                }
+            Spacer()
+            
+            // MARK: - Footer
+            Button {
+                isOnboardingViewActive = true
+            } label: {
+                Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
+                    .imageScale(.large)
+                Text("Restart")
+                    .font(.system(.title3,design: .default))
+                    .fontWeight(.bold)
             }
-            .onTapGesture {
-                isOnboardingViewActive = false
-            }
-            .foregroundColor(.white)
+            .buttonStyle(.borderedProminent)
+            .buttonBorderShape(.capsule)
+            .controlSize(.large)
         }
     }
 }
