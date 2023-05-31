@@ -10,17 +10,16 @@ import SwiftUI
 struct HomeView: View {
     @AppStorage("Onboarding") var isOnboardingViewActive = true
     var body: some View {
-        VStack(spacing:20) {
-            Text("Home View")
+        VStack {
+            Text("Hello view")
                 .font(.largeTitle)
             Button {
                 isOnboardingViewActive = true
             } label: {
-                Text("reset")
+                Text("Rest")
             }
             .buttonStyle(.borderedProminent)
             .tint(.black)
-
         }
     }
 }
